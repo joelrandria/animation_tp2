@@ -1,8 +1,9 @@
-#include <stdio.h>
+#include "App.h"
 
 int main(int argc, char** argv)
 {
-  printf("Hello world !\r\n");
+  App app(argc, argv);
+  app.run();
 
   return 0;
 }

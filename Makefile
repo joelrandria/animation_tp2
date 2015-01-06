@@ -1,4 +1,4 @@
-CFLAGS = -c -g -Wall -std=gnu99
+CFLAGS = -c -g -Wall
 CC = g++
 OS = "unknown"
 
@@ -30,13 +30,13 @@ job: tp2 #dox
 
 tp2: $(OBJ)
 
-	$(CC) $(GL_INCLUDE) $(GL_LIBDIR) $(OBJ) $(GL_LIBRARIES) -D$(OS) -o $(OBJDIR)/$@
+	$(CC) $(GL_LIBDIR) $(OBJ) $(GL_LIBRARIES) -D$(OS) -o $(OBJDIR)/$@
 
 #	ln -s $(OBJDIR)/$@ $@
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 
-	$(CC) $(CFLAGS) -D$(OS) -o $@ $<
+	$(CC) $(GL_INCLUDE) $(CFLAGS) -D$(OS) -o $@ $<
 
 dox:
 	rm -rf doc
