@@ -1,6 +1,8 @@
 #ifndef __APP_H__
 #define __APP_H__
 
+#include "DynamicWorld.h"
+
 class App
 {
  private:
@@ -10,6 +12,8 @@ class App
   int _argc;
   char** _argv;
 
+  DynamicWorld _obj;
+
  public:
 
   App(int argc, char** argv);
@@ -17,8 +21,9 @@ class App
   void run();
 
  private:
-
+  void simul();
   void draw();
+  void winInit ();
 
  public:
 
