@@ -27,7 +27,7 @@ void DynamicWorld::init(const int dimX, const int dimY)
   //*****01
   for(int y = 0; y < dimY-1; y++)
     {
-      _m_s.push_back(Spring (getParticl(0, y), getParticl(0, y+1), 2.f, 100.f));
+      _m_s.push_back(Spring (getParticl(0, y), getParticl(0, y+1), 2.f, 10.f));
     }
   //
 
@@ -37,18 +37,17 @@ void DynamicWorld::computeOneStep(const float dt)
 {
   int p;
 
-  for(p = 0; p < _height; p++)//H-1
+  for(p = 0; p < _height; p++)//initialisation de tt les point a la force de gravité
     {
       _m_p[p]->ResetForce();
       //          particles[p]->ResetForce();
       _m_p[p]->addForce(math::Vec3f (0.0, -9.81, 0.0));
-//            cout << "LOL "<< p <<endl;
-  if (p > 0)
-        _m_s[p-1].applyForceToParticles();
-
     }
 
-  for(p = 0; p < _height; p++)
+  for (p = 0; p < _height-1; p++)//application la force du ressort sur chaque point
+    _m_s[p].applyForceToParticles();
+
+  for(p = 0; p < _height; p++)//mettre a jour les la position et la vitesse
     _m_p[p]->computeOneStep(dt);
 }
 void DynamicWorld::draw() const
