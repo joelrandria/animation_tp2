@@ -6,7 +6,7 @@
 class Particle
 {
 public:
-   Particle(  math::Vec3f p, bool fixer = true,  float mass =1.0) :
+   Particle(  math::Vec3f p, bool fixer = true,  float mass =1.5) :
             _p(p), _fixer(fixer), _mass(mass), _v(0,0,0), _f(0,0,0) {}
    void addForce(const math::Vec3f& af);
    void ResetForce();

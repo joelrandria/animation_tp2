@@ -22,9 +22,9 @@ void Spring::applyForceToParticles()
   float l = u.norm();
   u.normalize();
 
-//  float viscosite = math::Vec3::dot((_p2->getPosition() - _p1->getPosition()),u);
-//  _p1->addForce( (((_k/_l0) * (l - _l0)) + viscosite)* u );
-//  _p2->addForce( (((-_k/_l0) * (l - _l0)) + viscosite)* u);
-  _p1->addForce ((_k * (l - _l0)) * u);
-  _p2->addForce ((-_k * (l - _l0)) * u);
+  float viscosite = dot((_p2->getPosition() - _p1->getPosition()),u);
+  _p1->addForce( (((_k/_l0) * (l - _l0)) + viscosite)* u );
+  _p2->addForce( (((-_k/_l0) * (l - _l0)) + viscosite)* u);
+//  _p1->addForce ((_k * (l - _l0)) * u);
+//  _p2->addForce ((-_k * (l - _l0)) * u);
 }
